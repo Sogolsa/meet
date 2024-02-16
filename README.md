@@ -1,13 +1,13 @@
-Feature 2: Show/Hide Event Details
-As a user,
-I should be able to show and hide event details.
-So that I can see the details of the events I chose and hide the details of events that I’m not interested in.
+##Feature 2: Show/Hide Event Details
+>As a user,
+>I should be able to show and hide event details.
+>So that I can see the details of the events I chose and hide the details of events that I’m not interested in.
 
-Scenario1:
-When the user hasn’t picked any events to show details about that event, the user should see the list of all events.
-Given the user opens the app.
-When the user hasn’t selected to show/hide any event details.
-Then the user should see a list of upcoming events without complete information about that event.
+###Scenario1:
+>When the user hasn’t picked any events to show details about that event, the user should see the list of all events.
+>Given the user opens the app.
+>When the user hasn’t selected to show/hide any event details.
+>Then the user should see a list of upcoming events without complete information about that event.
 
 Scenario 2:
 When the user clicks on the show details button, they should see all the information about that event.
