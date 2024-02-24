@@ -7,6 +7,10 @@
 > Given user hasn’t searched for any city;
 > When the user opens the app;
 > Then the user should see the list of upcoming events.
+### Scenario 2: 
+> User should see a list of suggestions when they search for a city.
+### Scenario 3:
+>  User can select a city from the suggested list.
 ## Feature 2: Show/Hide Event Details
 > As a user,
 > I should be able to show and hide event details.
