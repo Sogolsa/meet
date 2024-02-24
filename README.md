@@ -9,6 +9,9 @@
 > Then the user should see the list of upcoming events.
 ### Scenario 2: 
 > User should see a list of suggestions when they search for a city.
+> Given the main page is open;
+> When user starts typing in the city textbox;
+> Then the user should see a list of cities (suggestions) that match what they’ve typed.
 ### Scenario 3:
 >  User can select a city from the suggested list.
 ## Feature 2: Show/Hide Event Details
