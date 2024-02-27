@@ -1,6 +1,22 @@
 ## Serverless Functions:
 > To retrieve the event data from the Google Calendar, the client-side app needs to be authorized. This is where the serverless backend comes into play. Protected APIs can only be called by authenticated apps, apps that have a valid token issued by the API provider. Since Google Calender API is a protected API, in order ot access it we need a valid OAuth token.
 > serverless functions can be used for providing access tokens. we will use AWS Lambda for Meet APP to create serverless functions.
+## Feature 1: Filter Events By City
+### Scenario1:
+> When user hasn’t searched for a city, show upcoming events from all cities.
+> Given user hasn’t searched for any city;
+> When the user opens the app;
+> Then the user should see the list of upcoming events.
+### Scenario 2: 
+> User should see a list of suggestions when they search for a city.
+> Given the main page is open;
+> When user starts typing in the city textbox;
+> Then the user should see a list of cities (suggestions) that match what they’ve typed.
+### Scenario 3:
+>  User can select a city from the suggested list.
+> Given user was typing “Berlin” in the city textbox AND the list of suggested cities is showing;
+> When the user selects a city (e.g., “Berlin, Germany”) from the list;
+> Then their city should be changed to that city (i.e., “Berlin, Germany”) AND the user should receive a list of upcoming events in that city.
 ## Feature 2: Show/Hide Event Details
 > As a user,
 > I should be able to show and hide event details.
