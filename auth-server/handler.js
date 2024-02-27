@@ -117,7 +117,7 @@ module.exports.getCalendarEvents = async (event) => {
           console.log('calendar error');
           return reject(error);
         } else {
-          console.log('calendar successs');
+          console.log('calendar success');
           return resolve(response);
         }
       }
