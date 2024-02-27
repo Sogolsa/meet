@@ -1,12 +1,10 @@
-// NumberOfEvents.js
-
 import React, { useState } from 'react';
 
 const NumberOfEvents = ({ setCurrentNumberOfEvents }) => {
   const [numberOfEvents, setNumberOfEvents] = useState(32);
 
-  const handleInputChange = (e) => {
-    const value = e.target.value;
+  const handleInputChange = (event) => {
+    const value = event.target.value;
     setNumberOfEvents(value);
     setCurrentNumberOfEvents(value);
   };
@@ -20,7 +18,6 @@ const NumberOfEvents = ({ setCurrentNumberOfEvents }) => {
         className='number-of-events'
         value={numberOfEvents}
         onChange={handleInputChange}
-        aria-label='Number of Events Input'
       />
     </div>
   );
