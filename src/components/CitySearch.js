@@ -1,9 +1,16 @@
-import { useState } from 'react';
-const CitySearch = ({ allLocations }) => {
+import { useState, useEffect } from 'react';
+
+const CitySearch = ({ allLocations, setCurrentCity }) => {
   // default value is false, no suggestion list when input is not in focus
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
+
+  /* use the stringified value of the allLocation prop as a dependency
+  to compare the stings not their address in memory(different address although same value*/
+  useEffect(() => {
+    setSuggestions(allLocations);
+  }, [`${allLocations}`]);
 
   /*the function will be used as the callback function of onChange,
  which is why it has the event parameter in it.
@@ -21,13 +28,16 @@ const CitySearch = ({ allLocations }) => {
 
     setQuery(value);
     setSuggestions(filteredLocations);
+    setCurrentCity(value);
   };
 
   const handleItemClicked = (event) => {
     const value = event.target.textContent;
     setQuery(value);
-    setShowSuggestions(false); // to hide the list
+    setShowSuggestions(false);
+    setCurrentCity(value);
   };
+
   /** If showSuggestions is true,
    *  render a ul element with a suggestions list. Otherwise,
    *  render a null (show nothing/no suggestions)

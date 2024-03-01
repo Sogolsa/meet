@@ -1,13 +1,14 @@
-import { render } from '@testing-library/react';
+import { render, within, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import NumberOfEvents from '../components/NumberOfEvents';
+import App from '../App';
 
 describe('<NumberOfEvents /> component', () => {
   let NumberOfEventsComponent;
 
   beforeEach(() => {
     NumberOfEventsComponent = render(
-      <NumberOfEvents setCurrentNumberOfEvents={() => {}} />
+      <NumberOfEvents setCurrentNOE={() => {}} />
     );
   });
 
@@ -30,9 +31,10 @@ describe('<NumberOfEvents /> component', () => {
   });
 
   test("value of the NumberOfEvents component's textbox changes accordingly when typed", async () => {
-    const numberOfEvents = NumberOfEventsComponent.queryByRole('textbox');
+    const numberOfEventsTextBox =
+      NumberOfEventsComponent.queryByRole('textbox');
     const user = userEvent.setup();
-    await user.type(numberOfEvents, '{backspace}{backspace}10');
-    expect(numberOfEvents).toHaveValue('10');
+    await user.type(numberOfEventsTextBox, '{backspace}{backspace}10');
+    expect(numberOfEventsTextBox).toHaveValue('10');
   });
 });
