@@ -12,7 +12,7 @@ const Event = ({ event }) => {
       <h3>{event.summary}</h3>
       <p>{event.created}</p>
       <p>{event.location}</p>
-      <button onClick={handleToggleDetails}>
+      <button className='details-btn' onClick={handleToggleDetails}>
         {isDetailsVisible ? 'hide details' : 'show details'}
       </button>
       {isDetailsVisible && <div className='details'>{event.description}</div>}

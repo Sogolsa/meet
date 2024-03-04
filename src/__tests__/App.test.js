@@ -77,6 +77,11 @@ describe('<App /> integration', () => {
     });
   });
 
+  /**
+   * checking that when the user interacts with the NumberOfEvents component
+   *  to change the number of events, the App component updates the state
+   *  correctly and the EventList component renders the expected number of events.
+   */
   test('user can change the number of events displayed', async () => {
     const AppComponent = render(<App />);
     const AppDOM = AppComponent.container.firstChild;

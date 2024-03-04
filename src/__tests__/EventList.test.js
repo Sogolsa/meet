@@ -40,7 +40,7 @@ describe('<EventList /> integration', () => {
     await waitFor(() => {
       // within allows you to use React Testing Library query functions on the passed DOM object
       const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-      expect(EventListItems.length).toBeGreaterThan(0);
+      expect(EventListItems.length).toBe(32);
     });
   });
 });
