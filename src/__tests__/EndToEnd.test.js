@@ -1,4 +1,56 @@
 import puppeteer from 'puppeteer';
+// Defining a scope for feature 1, 3 scenarios
+describe('filter events by city', () => {
+  let browser;
+  let page;
+  beforeAll(async () => {
+    browser = await puppeteer.launch({
+      headless: false,
+      sloMo: 250,
+      timeOut: 0,
+    });
+    page = await browser.newPage();
+    await page.goto('http://localhost:3000/');
+    await page.waitForSelector('.event');
+  });
+
+  afterAll(() => {
+    browser.close();
+  });
+
+  // Feature 1: scenario 1
+  test("When user hasn't searched for a city, show upcoming events from all cities", async () => {
+    const allEvents = await page.$$('.event');
+    expect(allEvents.length).toBeGreaterThan(0);
+  });
+
+  //Feature 1: scenario 2
+  test('User should see a list of suggestions when they search for a city', async () => {
+    // Type in the city textbox to trigger suggestions
+    await page.type('#city-search', 'Berlin');
+
+    // Wait for the suggested cities to be displayed
+    await page.waitForSelector('.city');
+
+    // Check if suggestions are displayed
+    const suggestedCities = await page.$$('.city');
+    expect(suggestedCities.length).toBeGreaterThan(0);
+  });
+
+  test('User can select a city from the suggested list', async () => {
+    // Find the element with the class name suggestions
+    const selectedCity = await page.$('.suggestions');
+    await page.type('.city', 'Berlin');
+    // List of suggested cities are available
+    expect(selectedCity).toBeDefined();
+    // Wait for the suggested city list to become visible on the page
+    await page.waitForSelector('.suggestions');
+    await page.waitForTimeout(500);
+    // Retrieve the value of the city input after the city has been selected
+    const selectedCityValue = await page.$eval('.city', (input) => input.value);
+    expect(selectedCityValue).toBe('Berlin');
+  });
+});
 
 // Defining a new scope for feature 2 (3 scenarios)
 describe('show/hide an event details', () => {
@@ -23,6 +75,7 @@ describe('show/hide an event details', () => {
     // Closing the Chromium window after completing the test run
     browser.close();
   });
+
   // Feature 2: Scenario 1
   test('An event element is collapsed by default', async () => {
     // If this element is present means the event is expanded
