@@ -18,6 +18,7 @@ const App = () => {
   // Populate the events state with events list from fetch
   const fetchData = async () => {
     const allEvents = await getEvents();
+
     const filteredEvents =
       currentCity === 'See all cities'
         ? allEvents
