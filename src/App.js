@@ -14,11 +14,12 @@ const App = () => {
   const [currentNOE, setCurrentNOE] = useState(32);
   const [allLocations, setAllLocations] = useState([]);
   const [currentCity, setCurrentCity] = useState('See all cities');
+  const [loading, setLoading] = useState(true);
 
   // Populate the events state with events list from fetch
   const fetchData = async () => {
+    setLoading(false);
     const allEvents = await getEvents();
-
     const filteredEvents =
       currentCity === 'See all cities'
         ? allEvents
@@ -26,6 +27,7 @@ const App = () => {
     // Extract elements from index 0 up to currentNOE which is 32 (first 32 events)
     setEvents(filteredEvents.slice(0, currentNOE));
     setAllLocations(extractLocations(allEvents));
+    // setLoading(false);
   };
 
   // Populate the list as soon as the App Component is mounted.
@@ -37,7 +39,7 @@ const App = () => {
     <div className='App'>
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
       <NumberOfEvents setCurrentNOE={setCurrentNOE} />
-      <EventList events={events} />
+      {loading ? <p>Loading...</p> : <EventList events={events} />}
     </div>
   );
 };
