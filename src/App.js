@@ -18,11 +18,11 @@ const App = () => {
 
   // For optimization of loading time when the app is initially opened.
   const fetchInitialData = async () => {
-    // setLoading(true);
+    setLoading(true);
     const allEvents = await getEvents();
     setAllLocations(extractLocations(allEvents));
     setEvents(allEvents);
-    // setLoading(false);
+    setLoading(false);
   };
 
   useEffect(() => {
