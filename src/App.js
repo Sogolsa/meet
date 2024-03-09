@@ -14,16 +14,12 @@ const App = () => {
   const [currentNOE, setCurrentNOE] = useState(32);
   const [allLocations, setAllLocations] = useState([]);
   const [currentCity, setCurrentCity] = useState('See all cities');
-  const [loading, setLoading] = useState(true);
 
   // For optimization of loading time when the app is initially opened.
   const fetchInitialData = async () => {
-    setLoading(true);
-
     const allEvents = await getEvents();
     setAllLocations(extractLocations(allEvents));
     setEvents(allEvents);
-    // setLoading(false);
   };
 
   useEffect(() => {
@@ -33,7 +29,6 @@ const App = () => {
   // Populate the events state with events list from fetch
   const fetchData = async () => {
     // await new Promise((resolve) => setTimeout(resolve, 2000));
-    setLoading(false);
     const allEvents = await getEvents();
     const filteredEvents =
       currentCity === 'See all cities'
@@ -55,7 +50,7 @@ const App = () => {
     <div className='App'>
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
       <NumberOfEvents setCurrentNOE={setCurrentNOE} />
-      {loading ? <p>Loading...</p> : <EventList events={events} />}
+      <EventList events={events} />
     </div>
   );
 };

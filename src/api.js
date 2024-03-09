@@ -1,5 +1,7 @@
 // Handling API calls
 import mockData from './mock-data';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 /**
  * @param {*} events:
  * This function takes an events array, then uses map to create a new array with only locations.
@@ -52,8 +54,10 @@ const checkToken = async (accessToken) => {
 };
 // This function will fetch the list of all events
 export const getEvents = async () => {
+  NProgress.start();
   // limiting mock data to local host
   if (window.location.href.startsWith('http://localhost')) {
+    NProgress.done();
     return mockData;
   }
   const token = await getAccessToken();
