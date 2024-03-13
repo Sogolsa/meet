@@ -87,3 +87,12 @@ input[type="number"] {
   outline: none;
   cursor: pointer;
 }
+
+/* Alerts on top left corner of the app */
+.alerts-container {
+  position: fixed;
+  top: 0px;
+  left: 20px;
+  width: 250px;
+  z-index: 1000;
+}
