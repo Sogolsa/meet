@@ -80,7 +80,7 @@ export const getEvents = async () => {
     const result = await response.json();
     if (result) {
       NProgress.done();
-      // Events is an array but localStorage can only stringss
+      // Events is an array but localStorage can only strings
       localStorage.setItem('lastEvents', JSON.stringify(result.events));
       return result.events;
     } else return null;
