@@ -60,6 +60,15 @@ export const getEvents = async () => {
     NProgress.done();
     return mockData;
   }
+
+  // The user is offline? then the stored event list will be loaded
+  // no need to check access token if the user is offline, hence this code is before token
+  if (!navigator.onLine) {
+    const events = localStorage.getItem('lastEvents');
+    NProgress.done();
+    return events ? JSON.parse(events) : [];
+  }
+
   const token = await getAccessToken();
   if (token) {
     removeQuery();
@@ -70,6 +79,9 @@ export const getEvents = async () => {
     const response = await fetch(url);
     const result = await response.json();
     if (result) {
+      NProgress.done();
+      // Events is an array but localStorage can only stringss
+      localStorage.setItem('lastEvents', JSON.stringify(result.events));
       return result.events;
     } else return null;
   }
