@@ -56,8 +56,8 @@ const EventGenresChart = ({ events }) => {
         textAnchor={x > cx ? 'start' : 'end'}
         dominantBaseline='central'
       >
-        {`${genres[index]} ${(percent * 100).toFixed(0)}%`}
-      </text>
+        {`${(percent * 100).toFixed(0)}%`}
+      </text> //add ${genres[index]} if you want the genres name labels with percentage
     ) : null;
   };
 
