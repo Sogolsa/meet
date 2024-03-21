@@ -149,20 +149,20 @@ h1 {
   }
 
   .scatter-chart-title {
-    padding: 40px;
-    margin-bottom: 0px;
+    padding-top: 90px;
   }
 
   .recharts-default-legend {
-    margin-bottom: 60px;
+    margin-bottom: 80px;
   }
 
   .recharts-surface {
     margin-top: 0px;
+    width: 100%;
   }
 
   text {
-    font-size: 12px;
+    font-size: 10px;
   }
 
 
