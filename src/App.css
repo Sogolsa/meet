@@ -9,6 +9,16 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: rgb(70, 1, 32);
+  color: white;
+}
+
+.title {
+  color: rgb(244, 108, 169);
+}
+
+
 ul {
   padding: 0;
   list-style: none;
@@ -58,6 +68,7 @@ input[type="number"] {
   padding: 8px 6px 8px 10px;
   background-color: #eee;
   cursor: default;
+  color: black;
 }
 
 .suggestions>li:last-child {
@@ -67,6 +78,7 @@ input[type="number"] {
 
 .suggestions>li:hover {
   background-color: #bcdcdb;
+  color: black;
 }
 
 .event {
@@ -76,6 +88,21 @@ input[type="number"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
+  background-color: rgb(155, 3, 71);
+}
+
+#number-of-events {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#number-of-events label {
+  margin-bottom: 5px;
+}
+
+#number-of-events input {
+  margin-bottom: 50px;
 }
 
 .details-btn {
@@ -86,6 +113,8 @@ input[type="number"] {
   border-radius: 4px;
   outline: none;
   cursor: pointer;
+  background-color: white;
+  border-color: #FFC0CB;
 }
 
 /* Alerts on top left corner of the app */
@@ -97,14 +126,40 @@ input[type="number"] {
   z-index: 1000;
 }
 
-.charts-container {
+.charts-container,
+.rechart-responsive-container {
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 80px;
+  margin-top: 20px;
 }
+
+h1 {
+  font-size: 50px;
+  color:
+}
+
 
 /* media query */
 @media (max-width: 768px) {
   .charts-container {
     grid-template-columns: 1fr;
+    margin-bottom: 150px;
   }
+
+  .scatter-chart-title {
+    padding: 40px;
+    margin-bottom: 0px;
+  }
+
+  .recharts-default-legend {
+    margin-bottom: 60px;
+  }
+
+  .recharts-surface {
+    margin-top: 0px;
+  }
+
+
 }

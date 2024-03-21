@@ -1,11 +1,21 @@
+import { getWhitelistUrls } from 'atatus-spa';
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-import { ResponsiveContainer, PieChart, Pie, Legend, Cell } from 'recharts';
+import {
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Legend,
+  Cell,
+  Tooltip,
+} from 'recharts';
 
 const EventGenresChart = ({ events }) => {
-  const [data, setData] = useState('');
+  const [data, setData] = useState([]);
   const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'Angular'];
+  // Colors array
+  const colors = ['#FFC0CB', '#FFDAB9', '#98FB98', '#4169E1', '#708090'];
 
   // Use the useEffect hook to update the data state when the events prop changes
   useEffect(() => {
@@ -42,7 +52,7 @@ const EventGenresChart = ({ events }) => {
       <text
         x={x}
         y={y}
-        fill='#8884d8'
+        fill={colors[index]}
         textAnchor={x > cx ? 'start' : 'end'}
         dominantBaseline='central'
       >
@@ -53,14 +63,23 @@ const EventGenresChart = ({ events }) => {
 
   return (
     <ResponsiveContainer width='99%' height={400}>
+      <h3 className='chart-title'>Number of Events by Genre</h3>
       <PieChart>
         <Pie
           dataKey='value'
           data={data}
-          fill='#8884d8'
+          cx='50%'
+          cy='50%'
+          labelLine={false}
           label={renderCustomizedLabel}
-          outerRadius={150}
-        />
+          outerRadius={130}
+        >
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={colors[index]} />
+          ))}
+        </Pie>
+        <Tooltip />
+        <Legend verticalAlign='bottom' height={50} />
       </PieChart>
     </ResponsiveContainer>
   );

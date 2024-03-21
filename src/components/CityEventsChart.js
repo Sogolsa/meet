@@ -32,6 +32,7 @@ const CityEventsChart = ({ allLocations, events }) => {
   // without responsiveness-related issues, displaying multiple charts along side each other
   return (
     <ResponsiveContainer width='99%' height={400}>
+      <h3 className='scatter-chart-title'>Number of Events by City</h3>
       <ScatterChart
         margin={{
           top: 20,
@@ -47,7 +48,7 @@ const CityEventsChart = ({ allLocations, events }) => {
           name='city'
           angle={60} // tilts the angle downwards by 60 degrees
           interval={0} // Allows all labels always render, no matter the size of the screen
-          tick={{ dx: 20, dy: 40, fontSize: 14 }} // align the label with vertical tick line, 40px so it
+          tick={{ dx: 20, dy: 40, fontSize: 14, fill: 'white' }} // align the label with vertical tick line, 40px so it
           // doesn't clip with the chart
         />
         <YAxis
@@ -55,9 +56,10 @@ const CityEventsChart = ({ allLocations, events }) => {
           dataKey='count'
           name='number of events'
           allowDecimals={false}
+          tick={{ fill: 'white' }}
         />
         <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-        <Scatter name='A school' data={data} fill='#8884d8' />
+        <Scatter name='City Events' data={data} fill='#FFC0CB' />
       </ScatterChart>
     </ResponsiveContainer>
   );
