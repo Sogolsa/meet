@@ -23,9 +23,13 @@ const App = () => {
 
   // For optimization of loading time when the app is initially opened.
   const fetchInitialData = async () => {
-    const allEvents = await getEvents();
-    setAllLocations(extractLocations(allEvents));
-    setEvents(allEvents);
+    try {
+      const allEvents = await getEvents();
+      setAllLocations(extractLocations(allEvents));
+      setEvents(allEvents);
+    } catch (error) {
+      console.error('Error fetching initial data:', error);
+    }
   };
 
   useEffect(() => {
@@ -63,9 +67,9 @@ const App = () => {
     <div className='App'>
       <h1 className='title'>MEET APP</h1>
       <div className='alerts-container'>
-        {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
-        {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
-        {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
+        {infoAlert.length > 0 && <InfoAlert text={infoAlert} />}
+        {errorAlert.length > 0 && <ErrorAlert text={errorAlert} />}
+        {warningAlert.length > 0 && <WarningAlert text={warningAlert} />}
       </div>
       <CitySearch
         allLocations={allLocations}

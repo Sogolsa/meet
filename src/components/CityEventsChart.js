@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ScatterChart,
   Scatter,
@@ -10,7 +10,7 @@ import {
 } from 'recharts';
 
 const CityEventsChart = ({ allLocations, events }) => {
-  const [data, setData] = useState('');
+  const [data, setData] = useState([]);
 
   // Depending on what city or number of events the user selects, so `${events}`
   useEffect(() => {

@@ -1,10 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
   // default value is false, no suggestion list when input is not in focus
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Close suggestions if clicked outside the input element
+      if (inputRef.current && !inputRef.current.contains(event.target)) {
+        setShowSuggestions(false);
+      }
+    };
+    document.body.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.body.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   /* use the stringified value of the allLocation prop as a dependency
   to compare the stings not their address in memory(different address although same value*/
@@ -63,6 +78,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
         value={query}
         onFocus={() => setShowSuggestions(true)}
         onChange={handleInputChanged}
+        ref={inputRef}
       />
       {showSuggestions ? (
         <ul className='suggestions'>
