@@ -14,8 +14,10 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
         setShowSuggestions(false);
       }
     };
+    // listen to any clicks that happens on the webpage
     document.body.addEventListener('click', handleClickOutside);
 
+    // Cleaning up after we are done
     return () => {
       document.body.removeEventListener('click', handleClickOutside);
     };
