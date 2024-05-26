@@ -152,7 +152,7 @@
 
 ## Getting Started
 
-- Clone the repository: https://github.com/Sogolsa/meet.git
+- Clone the repository: git clone https://github.com/Sogolsa/meet.git
 - Install dependencies: npm install
 - Start the application: npm start
 
