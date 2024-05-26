@@ -141,3 +141,21 @@
 > Given the user has the home screen open.
 > When the user navigates to the chart section.
 > Then the user should be able to see charts that provide an overview of the popularity of that event.
+
+## Technologies Used
+
+- AWS (Amazon Web Services)
+- Jest: For Unit Testing and Integration Testing
+- Puppeteer: For End to End Testing
+- Cucumber: For Acceptance Testing
+- Recharts: For Data Visualization
+
+## Getting Started
+
+- Clone the repository: https://github.com/Sogolsa/meet.git
+- Install dependencies: npm install
+- Start the application: npm start
+
+## Link To The App
+
+https://sogolsa.github.io/meet/
